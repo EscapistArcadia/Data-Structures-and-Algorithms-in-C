@@ -1,52 +1,50 @@
 #include <list.h>
 #include <stdio.h>
 
-linked_list_prototype(int, test);
+void sc_list_test() {
+    struct sc_list_node *head = NULL;
 
-#define traverse_linked_list(head)                      \
-printf("%d, ", head->data);                             \
-for (it = head->next; it != head; it = it->next) {      \
-    printf("%d, ", it->data);                           \
-}                                                       \
-printf("\n")
+    sc_list_traverse(&head);
+    sc_list_add_tail(&head, 2);
+    sc_list_traverse(&head);
+    sc_list_add_tail(&head, 4);
+    sc_list_traverse(&head);
+    sc_list_add_tail(&head, 6);
+    sc_list_traverse(&head);
+    sc_list_add_tail(&head, 7);
+    sc_list_traverse(&head);
+    sc_list_add_tail(&head, 8);
+    sc_list_traverse(&head);
+    sc_list_delete(&head, 6);
+    sc_list_traverse(&head);
+    sc_list_delete(&head, 2);
+    sc_list_traverse(&head);
+    sc_list_destroy(&head);
+}
 
-void list_test() {
-    struct list_node *head = NULL, *it;
+void dc_list_test() {
+    struct dc_list_node *head = NULL;
 
-    list_add_head(&head, 2);
-    traverse_linked_list(head);
-
-    list_add_head(&head, 6);
-    traverse_linked_list(head);
-    
-    list_add_head(&head, 3);
-    traverse_linked_list(head);
-    
-    list_add_head(&head, 4);
-    traverse_linked_list(head);
-    
-    list_add_head(&head, 5);
-    traverse_linked_list(head);
-    
-    list_delete(&head, 5);
-    traverse_linked_list(head);
-    
-    list_delete(&head, 4);
-    traverse_linked_list(head);
-    
-    list_delete(&head, 6);
-    traverse_linked_list(head);
-    
-    list_delete(&head, 3);
-    traverse_linked_list(head);
-    
-    list_delete(&head, 6);
-    traverse_linked_list(head);
-
-    list_delete(&head, 2);
+    dc_list_traverse(&head);
+    dc_list_add_tail(&head, 2);
+    dc_list_traverse(&head);
+    dc_list_add_tail(&head, 4);
+    dc_list_traverse(&head);
+    dc_list_add_tail(&head, 6);
+    dc_list_traverse(&head);
+    dc_list_add_tail(&head, 7);
+    dc_list_traverse(&head);
+    dc_list_add_tail(&head, 8);
+    dc_list_traverse(&head);
+    dc_list_delete(&head, 6);
+    dc_list_traverse(&head);
+    dc_list_delete(&head, 2);
+    dc_list_traverse(&head);
+    dc_list_destroy(&head);
 }
 
 int main() {
-    list_test();
+    sc_list_test();
+    dc_list_test();
     return 0;
 }
